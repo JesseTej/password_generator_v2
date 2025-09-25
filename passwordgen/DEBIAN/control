@@ -1,0 +1,9 @@
+Package: passwordgen
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3, python3-gi, gir1.2-gtk-4.0, python3-cryptography
+Maintainer: Your Name jessetosto@gmail.com
+Description: GTK4 Password Generator & Manager
+ A simple password generator and encrypted vault manager built with GTK4 and Python.
