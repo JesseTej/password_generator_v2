@@ -2,7 +2,7 @@
 
 import gi
 import string
-import random
+import secrets
 import json
 import os
 import base64
@@ -191,7 +191,7 @@ class PasswordGenerator(Gtk.Application):
             self.copy_btn.set_sensitive(False)
             return
 
-        self.generated_password = ''.join(random.choice(chars) for _ in range(length))
+        self.generated_password = ''.join(secrets.choice(chars) for _ in range(length))
         self.result_label.set_label(f"Password: {self.generated_password}")
         self.copy_btn.set_sensitive(True)
 

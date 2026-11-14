@@ -6,7 +6,7 @@ A small GTK4 desktop app, written in Python, that generates random passwords and
 
 ## Features
 
-- Generate passwords of any length from digits, letters and/or symbols
+- Generate passwords of any length from digits, letters and/or symbols, using Python's cryptographically secure `secrets` module
 - Copy the generated password to the clipboard
 - Save a password together with a service name and username to an encrypted vault
 - View every saved entry once the vault is unlocked
@@ -23,6 +23,8 @@ When the app starts it asks for a master password. (The dialog calls it a "Sudo 
   - `vault.salt`: the salt for key derivation
 
 The first password you enter becomes the master password. If you lose it, the vault cannot be recovered. Delete both files to start over.
+
+Never commit vault, salt or key files to git. The `.gitignore` excludes `*.enc`, `*.salt` and `*.key`.
 
 ## Requirements
 
@@ -74,6 +76,5 @@ dpkg-deb --build passwordgen
 
 ## Known limitations
 
-- Passwords are generated with Python's `random` module. The `secrets` module is the cryptographically secure choice for passwords.
 - Saving an entry for a service that already exists overwrites it.
 - Saved passwords are shown in plain text in the "Saved Passwords" window.
