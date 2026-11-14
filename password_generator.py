@@ -2,7 +2,7 @@
 
 import gi
 import string
-import random
+import secrets
 
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk, Gio, Gdk, GLib
@@ -123,7 +123,7 @@ class PasswordGenerator(Gtk.Application):
             self.copy_btn.set_sensitive(False)
             return
 
-        self.generated_password = ''.join(random.choice(chars) for _ in range(length))
+        self.generated_password = ''.join(secrets.choice(chars) for _ in range(length))
         self.result_label.set_label(f"Password: {self.generated_password}")
         self.copy_btn.set_sensitive(True)
         

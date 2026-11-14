@@ -2,7 +2,7 @@
 
 import gi
 import string
-import random
+import secrets
 import json
 import os
 import base64
@@ -18,7 +18,7 @@ from gi.repository import Gtk, Gio, Gdk, GLib
 
 class PasswordGenerator(Gtk.Application):
     def __init__(self):
-        super().__init__(application_id="khalidray39@gmail.com.PasswordGenerator")
+        super().__init__(application_id="org.example.PasswordGenerator")
         self.connect("activate", self.on_activate)
         self.window = None
         self.master_key = None
@@ -184,7 +184,7 @@ class PasswordGenerator(Gtk.Application):
             self.copy_btn.set_sensitive(False)
             return
 
-        self.generated_password = ''.join(random.choice(chars) for _ in range(length))
+        self.generated_password = ''.join(secrets.choice(chars) for _ in range(length))
         self.result_label.set_label(f"Password: {self.generated_password}")
         self.copy_btn.set_sensitive(True)
 
